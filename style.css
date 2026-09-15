@@ -1,0 +1,67 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --cord-color: #888888;
+  --handle-color: #f59e0b;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f3f4f6;
+  --cord-color: #666666;
+  --handle-color: #3b82f6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+}
+
+.content {
+  padding: 80px 40px;
+}
+
+/* ঝুলন্ত দড়ি */
+.pull-wrapper {
+  position: fixed;
+  top: 0;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  user-select: none;
+}
+
+/* সুতো / দড়ি */
+.string {
+  width: 3px;
+  height: 90px;
+  background-color: var(--cord-color);
+  transition: height 0.15s ease-out, background-color 0.3s;
+}
+
+/* দড়ির নিচের হাতল */
+.handle {
+  width: 14px;
+  height: 24px;
+  background-color: var(--handle-color);
+  border-radius: 7px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease-out;
+}
+
+/* টানার ইফেক্ট */
+.pull-wrapper.pulling .string {
+  height: 130px; /* টানলে দড়ি লম্বা হবে */
+}
+
+.pull-wrapper.pulling .handle {
+  transform: translateY(10px);
+}
