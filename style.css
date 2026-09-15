@@ -1,19 +1,24 @@
 :root {
   --bg-color: #ffffff;
-  --text-color: #111827;
+  --text-color: #1a1a1a;
+  --cord-color: #888888;
+  --handle-color: #f59e0b;
 }
 
 body.dark-mode {
   --bg-color: #121212;
-  --text-color: #f9fafb;
+  --text-color: #f3f4f6;
+  --cord-color: #666666;
+  --handle-color: #3b82f6;
 }
 
 body {
   margin: 0;
+  padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
   min-height: 100vh;
 }
 
@@ -29,9 +34,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
   z-index: 1000;
-  touch-action: none;
-  /* মোবাইলে স্ক্রল হওয়া আটকাবে টানার সময় */
   user-select: none;
 }
 
@@ -39,28 +43,18 @@ body {
 .string {
   width: 3px;
   height: 90px;
-  /* স্বাভাবিক উচ্চতা */
-  background-color: #888;
+  background-color: var(--cord-color);
+  transition: height 0.15s ease-out, background-color 0.3s;
 }
 
+/* দড়ির নিচের হাতল */
 .handle {
   width: 14px;
   height: 24px;
-  background-color: #f59e0b;
+  background-color: var(--handle-color);
   border-radius: 7px;
-  cursor: grab;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.handle:active {
-  cursor: grabbing;
-}
-
-/* যখন ছেড়ে দেওয়া হবে তখন স্প্রিং-এর মতো আগের জায়গায় ফেরার অ্যানিমেশন */
-.pull-wrapper.releasing .string,
-.pull-wrapper.releasing .handle {
-  transition: height 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease-out;
 }
 
 /* টানার ইফেক্ট */
